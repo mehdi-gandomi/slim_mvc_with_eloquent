@@ -1,6 +1,6 @@
 <?php
 // DIC configuration
-
+use App\Config;
 $container = $app->getContainer();
 
 // Config App Container
@@ -28,8 +28,8 @@ $container['notFoundHandler'] = function ($c) {
         return $response;
     };
 };
-    
-//confgiure monolog logger
+
+
 $container['logger'] = function ($c) {
     $settings = $c->get('settings')['logger'];
     $logger = new Monolog\Logger($settings['name']);
@@ -37,5 +37,25 @@ $container['logger'] = function ($c) {
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     return $logger;
 };
+//confgiure monolog logger
+// if(!Config::SHOW_ERRORS){
+    
+//     $container['Logger'] = function($c) {
+//         $logger = new Monolog\Logger('logger');
+//         $filename = _DIR__ . '/logs/error.log';
+//         $stream = new Monolog\Handler\StreamHandler($filename, Monolog\Logger::DEBUG);
+//         $fingersCrossed = new Monolog\Handler\FingersCrossedHandler(
+//             $stream, Monolog\Logger::EMERGENCY);
+//         $logger->pushHandler($fingersCrossed);
+//         return $logger;
+//     };
+//     $container['errorHandler'] = function ($c) {
+//         return new Core\ErrorLogger($c['Logger']);
+//     };
+//     $container['phpErrorHandler'] = function ($c) {
+//         return $c['errorHandler'];
+//     };
+// }
+
 
 

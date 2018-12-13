@@ -31,9 +31,5 @@ class Config
      * Show or hide error messages on screen
      * @var boolean
      */
-    const SHOW_ERRORS = true;
-
-    const ENCRYPTION_KEY="c8tUbkNbXDQcuKL3";
-    const ENCRYPTION_LENGTH=8;
-    const BASE_URL="http://localhost:3000";
+    const SHOW_ERRORS = false;
 }

@@ -1,7 +1,8 @@
 <?php
+use App\Config;
 return array(
     'settings' => [
-        'displayErrorDetails' => true, // set to false in production
+        'displayErrorDetails' => Config::SHOW_ERRORS, // set to false in production
         'addContentLengthHeader' => false, // Allow the web server to send the content-length header
 
         // Monolog settings
