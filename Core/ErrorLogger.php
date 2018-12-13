@@ -1,17 +1,23 @@
 <?php
- 
+
 namespace Core;
- 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
- 
-final class ErrorLogger
-{
+use Monolog\Logger;
 
- 
-    public function __invoke(Request $request, Response $response, \Exception $exception)
+final class ErrorLogger extends \Slim\Handlers\Error
+{
+    protected $logger;
+
+    public function __construct(Logger $logger)
+    {
+        $this->logger = $logger;
+    }
+    public function __invoke(Request $request, Response $response, \Throwable $exception)
     {
         // Log the message
-        var_dump($exception);
+        $this->logger->critical($exception->getMessage());
+
+        return parent::__invoke($request, $response, $exception);
     }
 }

@@ -20,7 +20,7 @@ $app->get('/',function (Request $request, Response $response, array $args){
     $this->view->render($response,"home.twig",["page_title"=>"صفحه اصلی"]);
 });
 $app->get('/exception',function (Request $request, Response $response, array $args){
-    return new Exception("fuck");
+    throw new Exception("fuck");
 });
 $app->get('/post/{id}',"PostController:one_post");
 

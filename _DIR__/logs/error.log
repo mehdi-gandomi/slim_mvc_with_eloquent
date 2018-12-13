@@ -1,3 +1,0 @@
-[2018-12-13 17:57:55] logger.CRITICAL: Call to undefined method PostController::view() [] []
-[2018-12-13 18:17:33] logger.CRITICAL: Call to undefined method PostController::view() [] []
-[2018-12-13 18:17:47] logger.CRITICAL: Call to undefined method PostController::view() [] []

@@ -38,24 +38,24 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 //confgiure monolog logger
-// if(!Config::SHOW_ERRORS){
+if(Config::LOG_ERRORS){
     
-//     $container['Logger'] = function($c) {
-//         $logger = new Monolog\Logger('logger');
-//         $filename = _DIR__ . '/logs/error.log';
-//         $stream = new Monolog\Handler\StreamHandler($filename, Monolog\Logger::DEBUG);
-//         $fingersCrossed = new Monolog\Handler\FingersCrossedHandler(
-//             $stream, Monolog\Logger::EMERGENCY);
-//         $logger->pushHandler($fingersCrossed);
-//         return $logger;
-//     };
-//     $container['errorHandler'] = function ($c) {
-//         return new Core\ErrorLogger($c['Logger']);
-//     };
-//     $container['phpErrorHandler'] = function ($c) {
-//         return $c['errorHandler'];
-//     };
-// }
+    $container['Logger'] = function($c) {
+        $logger = new Monolog\Logger('logger');
+        $filename =__DIR__. '/logs/error.log';
+        $stream = new Monolog\Handler\StreamHandler($filename, Monolog\Logger::DEBUG);
+        $fingersCrossed = new Monolog\Handler\FingersCrossedHandler(
+            $stream, Monolog\Logger::ERROR);
+        $logger->pushHandler($fingersCrossed);
+        return $logger;
+    };
+    $container['errorHandler'] = function ($c) {
+        return new Core\ErrorLogger($c['Logger']);
+    };
+    $container['phpErrorHandler'] = function ($c) {
+        return $c['errorHandler'];
+    };
+}
 
 
 
