@@ -1,0 +1,59 @@
+{% extends "_base.twig" %}
+{% block content %}
+<div class="container">
+    <h1>/songs/search</h1>
+    <div>
+        Everything inside this box comes from view/songs.twig.<br/>
+        Everything outside this box comes from view/_base.twig (which is the surrounding layout template).
+    </div>
+    <!-- search song form -->
+    <div class="box">
+        <h2>Search</h2>
+        <form action="/songs/search" method="POST">
+            <input type="text" name="search_term" value="" placeholder="Search term" required />
+            <input type="submit" name="submit_search_song" value="Search" />
+        </form>
+    </div>
+    <!-- main content output -->
+    <div class="box">
+        <h2>Results of your search ({{ amount_of_results }} items)</h2>
+        <div>
+            This search function crawls artist and track name.
+        </div>
+        <div>
+        <table>
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Artist</td>
+                    <td>Track</td>
+                    <td>Link</td>
+                    <td>Year</td>
+                    <td>Country</td>
+                    <td>Genre</td>
+                    <td>DELETE</td>
+                    <td>EDIT</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for song in songs %}
+                <tr>
+                    <td>{{ song.id }}</td>
+                    <td>{{ song.artist }}</td>
+                    <td>{{ song.track }}</td>
+                    <td>
+                        <a href="{{ song.link }}">{{ song.link }}</a>
+                    </td>
+                    <td>{{ song.year }}</td>
+                    <td>{{ song.country }}</td>
+                    <td>{{ song.genre }}</td>
+                    <td><a href="/songs/deletesong/{{ song.id }}">delete</a></td>
+                    <td><a href="/songs/editsong/{{ song.id }}">edit</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

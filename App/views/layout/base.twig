@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+           <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>slim mvc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+        {% endblock %}
+        {% block stylebelow %}{% endblock %}
+    </head>
+    <body>
+        <main class="rtl">{% block content %}{% endblock %}</main>
+
+      {% block scriptabove %}{% endblock %}
+      {% block scriptbelow %}{% endblock %}
+    </body>
+</html>
