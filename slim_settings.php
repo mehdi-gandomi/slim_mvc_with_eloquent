@@ -11,6 +11,18 @@ return array(
             'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
+        'db' => [
+            'driver' => Config::DB_DRIVER,
+            'host' => Config::DB_HOST,
+            'port'=>Config::DB_PORT,
+            'database' => Config::DB_NAME,
+            'username' => Config::DB_USER,
+            'password' => Config::DB_PASSWORD,
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => Config::TABLE_PREFIX
+           
+        ]
     ],
 );
 

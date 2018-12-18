@@ -57,5 +57,14 @@ if(Config::LOG_ERRORS){
     };
 }
 
+$capsule = new \Illuminate\Database\Capsule\Manager;
+$capsule->addConnection($container['settings']['db']);
 
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
 
+// Service factory for the ORM
+$container['db'] = function ($container) {
+   
+    return $capsule;
+};
